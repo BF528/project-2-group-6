@@ -1,0 +1,76 @@
+---
+title: "Data Curator Role for Project 2"
+author: "Simran Makwana"
+date: "2/19/2020"
+output: word_document
+---
+
+#2. Data acquisition & transfer to remote server
+Lead role: Data Curator
+
+As in the last study, all but one of the samples for this study have been downloaded and prepared for you. You will download the one remaining sample and process it.
+
+2.1) Download the sample GSM1570702 (vP0_1) from GEO Series GSE64403 to one of your directories on SCC. The filename you should download is SRR1727914.sra and it is 1.1Gb. The file is in SRA (short read archive) format.
+```{r echo = FALSE, message = FALSE}
+
+```
+
+2.2) Use the command module load sratoolkit to make the SRA tools available. Read the SRAtoolkit documentation to find the correct command to use to extract the SRA format to FASTQ. This is a paired-end sequencing run, so you will have two FASTQ files. You may find it convenient to rename the SRA file to P0_1.sra before converting to FASTQ. Create a file run_extract.qsub, and put all code for extracting the FASTQ files, including the module command from above, into it and submit it as a batch job using the qsub command. You should use the file /project/bf528/project_2/scripts/qsub_skel.qsub as a template.
+```{r echo = FALSE, message = FALSE}
+
+```
+
+2.3) Once you have extracted the short reads to FASTQ format, inspect the files with head and ensure the format is what you expect. Also ensure that the text in the header fields of the records are exactly the same between the two files, i.e. the first read in the first FASTQ file should be mated with the first read in the second file.
+```{r echo = FALSE, message = FALSE}
+
+```
+
+#3. Quality control FASTQ files
+Lead role: Data Curator
+
+Now that we have FASTQ files, we will begin processing them and extracting quality measures. We will use the FastQC package available on SCC to do this.
+
+3.1) Use the command module load fastqc on the cluster to make the FastQC tool available on the command line.
+```{r echo = FALSE, message = FALSE}
+
+```
+
+3.2) By default, FastQC is run with a graphical user interface (GUI), but we are going to run it in command line mode. Do this by simply running the fastqc command with the FASTQ files you extracted in the previous step as arguments. You may run fastqc -h to output how to use the fastqc command. You may find the -o|--outdir command line argument helpful.
+```{r echo = FALSE, message = FALSE}
+
+```
+
+3.3) The tool will create a number of html and image files of the statistics. You can look at the html files if you choose using head, cat, or your favorite command line text editor (nano, emacs, vim, etc). You will not be able to view the images directly on the cluster, so you must download them. Download both the images and the html files to your desktop/laptop computer using a compatible SFTP application (e.g. WinSCP on Windows, RBrowser or Cyberduck on Mac).
+```{r echo = FALSE, message = FALSE}
+
+```
+
+3.4) Examine the output of FastQC by opening the html files in a web browser. Observe if any of the quality metrics failed.
+```{r echo = FALSE, message = FALSE}
+
+```
+
+3.5) Report the results of the metrics read quality, GC content bias, sequence duplication levels, and kmer content in your report.
+```{r echo = FALSE, message = FALSE}
+
+```
+
+# Deliverables:
+A summary of the quality of the dataset as assessed by fastqc
+```{r echo = FALSE, message = FALSE}
+
+```
+
+A description of any anomalies, or questions about data quality
+```{r echo = FALSE, message = FALSE}
+
+```
+
+Any plots that support the above
+
+
+
+
+
+
+
