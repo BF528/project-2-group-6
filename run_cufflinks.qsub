@@ -1,0 +1,15 @@
+#!/bin/bash
+
+#$ -P bf528
+#$ -cwd
+#$ -j y
+#$ -pe mpi_16_tasks_per_node 16
+
+echo "Running job $JOB_ID"
+echo "Started: $(date +%F)"
+echo "Running in directory: $PWD"
+
+# Load the modules
+cufflinks --compatible-hits-norm -G /project/bf528/project_2/reference/annot/mm9.gtf -b /project/bf528/project_2/reference/mm9.fa -u -o cufflinks/P0_1_cufflinks -p 16 P0_1_tophat/accepted_hits.bam
+# Files to be used are /projectnb/bf528/users/group6/project_2/samples/P0_1_1.fastq and P0_1_2.fastq
+echo "Job finished: $(date +%F)"
